@@ -34,8 +34,7 @@ public class FileReaderService {
 		try (BufferedReader br = new BufferedReader(new FileReader(pricesFileName))) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				final WeightAndPricePair weightAndPricePair = inputParserService.parseWeightAndPrice(line);
-//				packageService.add(postalCodeWeightPair.getPostalCode(), postalCodeWeightPair.getWeight());
+				packageService.addWeightAndPricePair(inputParserService.parseWeightAndPrice(line));
 			}
 		}
 	}

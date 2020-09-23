@@ -53,9 +53,18 @@ public class PackageService {
 	 * @return the Price of the Package for a given Weight
 	 */
 	public double getPriceForWeight(final double weight) {
-		return priceStorage.stream().filter(p -> p.getWeight() < weight)
+		return priceStorage.stream().filter(p -> p.getWeight() <= weight)
 			.max(Comparator.comparing(WeightAndPricePair::getWeight))
 			.map(WeightAndPricePair::getPrice).orElse(.0);
+	}
+
+	/**
+	 * Adds a new value to the <code>priceStorage</code> field.
+	 * This storage is not thread safe, so all adding must be done before the first call of the method <code>getPriceForWeight</code>!
+	 * @param weightAndPrice the Weight and Price to be added
+	 */
+	public void addWeightAndPricePair(final WeightAndPricePair weightAndPrice) {
+		priceStorage.add(weightAndPrice);
 	}
 
 }

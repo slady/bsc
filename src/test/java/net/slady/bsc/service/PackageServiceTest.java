@@ -1,6 +1,7 @@
 package net.slady.bsc.service;
 
 import net.slady.bsc.TestHelper;
+import net.slady.bsc.entities.WeightAndPricePair;
 import net.slady.bsc.util.ComparableDoubleAdder;
 import org.junit.Assert;
 import org.junit.Test;
@@ -42,6 +43,26 @@ public class PackageServiceTest {
 		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue().doubleValue());
 		TestHelper.assertDoubleEquals(5.5, iterator.next().getValue().doubleValue());
 		Assert.assertFalse(iterator.hasNext());
+	}
+
+	/**
+	 * Test adds various Prices to Weights and reads the correct values.
+	 */
+	@Test
+	public void addWeightAndPricePairTest() {
+		final PackageService service = new PackageService();
+		service.addWeightAndPricePair(new WeightAndPricePair(10, 5));
+		service.addWeightAndPricePair(new WeightAndPricePair(5, 2.5));
+		service.addWeightAndPricePair(new WeightAndPricePair(3, 2));
+		service.addWeightAndPricePair(new WeightAndPricePair(2, 1.5));
+		service.addWeightAndPricePair(new WeightAndPricePair(1, 1));
+		service.addWeightAndPricePair(new WeightAndPricePair(.5, .7));
+		service.addWeightAndPricePair(new WeightAndPricePair(.2, .5));
+
+		TestHelper.assertDoubleEquals(5, service.getPriceForWeight(11));
+		TestHelper.assertDoubleEquals(5, service.getPriceForWeight(10));
+		TestHelper.assertDoubleEquals(2.5, service.getPriceForWeight(9));
+		TestHelper.assertDoubleEquals(2.5, service.getPriceForWeight(5));
 	}
 
 }
