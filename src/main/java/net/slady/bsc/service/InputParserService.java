@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class InputParserService {
 
 	/** The user input validation regular expression. */
-	private static final String INPUT_PATTERN_REGEX = "\\d+(\\.\\d{1,3})?\\s\\d{5}";
+	private static final String INPUT_PATTERN_REGEX = "\\d*(\\.\\d{1,3})?\\s\\d{5}";
 
 	/**
 	 * Method for parsing the user input or the input from a file of Postal Code and Weight.

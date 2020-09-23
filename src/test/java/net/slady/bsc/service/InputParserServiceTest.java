@@ -56,6 +56,16 @@ public class InputParserServiceTest {
 	}
 
 	/**
+	 * Test the correct parsing of Weight in the format ".1" without the leading digit.
+	 * @throws InputFormatException if something goes wrong
+	 * @throws IncorrectWeightException if something goes wrong
+	 */
+	@Test
+	public void parsePostalCodeAndWeightWithoutLeadingDigitTest() throws InputFormatException, IncorrectWeightException {
+		service.parsePostalCodeAndWeight(".1 12345");
+	}
+
+	/**
 	 * Test an incorrect number of Postal Code digits on the input of Postal Code and Weight,
 	 * the {@link InputFormatException} is expected to be thrown.
 	 * @throws InputFormatException is expected to be thrown.
