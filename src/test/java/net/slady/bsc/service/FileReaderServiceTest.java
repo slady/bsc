@@ -42,11 +42,23 @@ public class FileReaderServiceTest {
 		service = new FileReaderService(inputParserService, packageService);
 	}
 
+	/**
+	 * Tests the import of the weights file.
+	 * @throws InputFormatException if something goes wrong
+	 * @throws IncorrectWeightException if something goes wrong
+	 * @throws IOException if something goes wrong
+	 */
 	@Test
 	public void weightsImportTest() throws InputFormatException, IncorrectWeightException, IOException {
 		service.weightsImport(TEST_WEIGHTS_FILE_NAME);
 	}
 
+	/**
+	 * Tests the import of the Prices file.
+	 * @throws IOException if something goes wrong
+	 * @throws IncorrectWeightException if something goes wrong
+	 * @throws InputFormatException if something goes wrong
+	 */
 	@Test
 	public void pricesImportTest() throws IOException, IncorrectWeightException, InputFormatException {
 		service.pricesImport(TEST_PRICES_FILE_NAME);

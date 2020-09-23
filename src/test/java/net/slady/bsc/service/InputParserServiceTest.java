@@ -164,7 +164,7 @@ public class InputParserServiceTest {
 	 * Test a complete nonsense on the input of the Weight and Price.
 	 * the {@link InputFormatException} is expected to be thrown.
 	 * @throws InputFormatException this exception is the expected result
-	 * @throws IncorrectWeightException  if something goes wrong
+	 * @throws IncorrectWeightException if something goes wrong
 	 */
 	@Test(expected = InputFormatException.class)
 	public void parseWeightAndPriceWrongTest() throws InputFormatException, IncorrectWeightException {
