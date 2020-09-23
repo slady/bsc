@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class PackageDelivery {
 
 	/**
-	 * The entry point of the program.
+	 * The entry point of the Package Delivery program.
 	 * @param args command line arguments as described in the README file
 	 */
 	public static void main(final String... args) {

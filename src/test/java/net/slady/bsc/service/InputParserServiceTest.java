@@ -28,7 +28,7 @@ public class InputParserServiceTest {
 	}
 
 	/**
-	 * Insert all the input values of Postal Codes and Weights from the homework text.
+	 * Test to insert all the input values of Postal Codes and Weights from the homework text.
 	 * @throws InputFormatException if something goes wrong
 	 * @throws IncorrectWeightException if something goes wrong
 	 */

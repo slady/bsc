@@ -10,8 +10,14 @@ import java.util.Map;
 
 import static net.slady.bsc.TestProperties.DELTA;
 
+/**
+ * Unit test of the {@link PackageServiceTest}.
+ */
 public class PackageServiceTest {
 
+	/**
+	 * Test adds various Weights to Postal Codes and reads them in the correct order.
+	 */
 	@Test
 	public void addTest() {
 		final PackageService service = new PackageService();
