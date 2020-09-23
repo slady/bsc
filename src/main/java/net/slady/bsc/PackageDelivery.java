@@ -3,6 +3,7 @@ package net.slady.bsc;
 import net.slady.bsc.entities.PostalCodeWeightPair;
 import net.slady.bsc.exceptions.IncorrectWeightException;
 import net.slady.bsc.exceptions.InputFormatException;
+import net.slady.bsc.service.FileReaderService;
 import net.slady.bsc.service.InputParserService;
 import net.slady.bsc.service.PackageService;
 
@@ -27,6 +28,10 @@ public class PackageDelivery {
 	public static void main(final String... args) {
 		final InputParserService inputParserService = new InputParserService();
 		final PackageService packageService = new PackageService();
+
+		if (args.length > 0) {
+			new FileReaderService(inputParserService, packageService);
+		}
 
 		// create a Scanner using the InputStream
 		final Scanner scanner = new Scanner(System.in);
