@@ -25,7 +25,7 @@ public class FileReaderService {
 			String line;
 			while ((line = br.readLine()) != null) {
 				final PostalCodeWeightPair postalCodeWeightPair = inputParserService.parsePostalCodeAndWeight(line);
-				packageService.add(postalCodeWeightPair.getPostalCode(), postalCodeWeightPair.getWeight());
+				packageService.addWeightToPostalCode(postalCodeWeightPair.getPostalCode(), postalCodeWeightPair.getWeight());
 			}
 		}
 	}

@@ -18,25 +18,25 @@ public class PackageServiceTest {
 	 * Test adds various Weights to Postal Codes and reads them in the correct order.
 	 */
 	@Test
-	public void addTest() {
+	public void addWeightToPostalCodeTest() {
 		final PackageService service = new PackageService();
-		service.add("12345", 1.1);
-		service.add("12345", 2.2);
+		service.addWeightToPostalCode("12345", 1.1);
+		service.addWeightToPostalCode("12345", 2.2);
 
-		final LinkedHashMap<String, ComparableDoubleAdder> lines1 = service.getLines();
+		final LinkedHashMap<String, ComparableDoubleAdder> lines1 = service.getWeightLines();
 		Assert.assertNotNull(lines1);
 		Assert.assertEquals(1, lines1.size());
 		TestHelper.assertDoubleEquals(3.3, lines1.get("12345").doubleValue());
 
-		service.add("54321", 5.5);
-		final LinkedHashMap<String, ComparableDoubleAdder> lines2 = service.getLines();
+		service.addWeightToPostalCode("54321", 5.5);
+		final LinkedHashMap<String, ComparableDoubleAdder> lines2 = service.getWeightLines();
 		Assert.assertNotNull(lines2);
 		Assert.assertEquals(2, lines2.size());
 		TestHelper.assertDoubleEquals(3.3, lines2.get("12345").doubleValue());
 		TestHelper.assertDoubleEquals(5.5, lines2.get("54321").doubleValue());
 
-		service.add("98765", 4.4);
-		final LinkedHashMap<String, ComparableDoubleAdder> lines3 = service.getLines();
+		service.addWeightToPostalCode("98765", 4.4);
+		final LinkedHashMap<String, ComparableDoubleAdder> lines3 = service.getWeightLines();
 		final Iterator<Map.Entry<String, ComparableDoubleAdder>> iterator = lines3.entrySet().iterator();
 		TestHelper.assertDoubleEquals(3.3, iterator.next().getValue().doubleValue());
 		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue().doubleValue());

@@ -70,7 +70,7 @@ public class PackageDelivery {
 				continue;
 			}
 
-			packageService.add(postalCodeWeightPair.getPostalCode(), postalCodeWeightPair.getWeight());
+			packageService.addWeightToPostalCode(postalCodeWeightPair.getPostalCode(), postalCodeWeightPair.getWeight());
 		}
 	}
 

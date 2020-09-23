@@ -30,7 +30,7 @@ public class PackageService {
 	 * @param postalCode the postal code to be added to
 	 * @param weight weight to be added
 	 */
-	public void add(final String postalCode, final double weight) {
+	public void addWeightToPostalCode(final String postalCode, final double weight) {
 		packageStorage.computeIfAbsent(postalCode, k -> new ComparableDoubleAdder()).add(weight);
 	}
 
@@ -39,7 +39,7 @@ public class PackageService {
 	 * The list is ordered by the total weight values in the descending order.
 	 * @return list of postal codes and their total weights in a {@link LinkedHashMap}
 	 */
-	public LinkedHashMap<String, ComparableDoubleAdder> getLines() {
+	public LinkedHashMap<String, ComparableDoubleAdder> getWeightLines() {
 		return packageStorage.entrySet().stream().sorted(Map.Entry.comparingByValue())
 			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
 				(oldValue, newValue) -> oldValue, LinkedHashMap::new));
