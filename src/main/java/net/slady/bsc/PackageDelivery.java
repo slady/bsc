@@ -33,6 +33,10 @@ public class PackageDelivery {
 			new FileReaderService(inputParserService, packageService);
 		}
 
+		// create and start the WriterThread
+		final WriterThread writerThread = new WriterThread(packageService);
+		writerThread.start();
+
 		// create a Scanner using the InputStream
 		final Scanner scanner = new Scanner(System.in);
 
@@ -49,6 +53,7 @@ public class PackageDelivery {
 
 			// exit the infinite loop on the "quit" keyword
 			if (KEYWORD_QUIT.equalsIgnoreCase(trim.toLowerCase())) {
+				writerThread.stopRequest();
 				break;
 			}
 
