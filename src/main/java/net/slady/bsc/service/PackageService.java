@@ -58,6 +58,10 @@ public class PackageService {
 			.map(WeightAndPricePair::getPrice).orElse(.0);
 	}
 
+	public boolean isPrice() {
+		return !priceStorage.isEmpty();
+	}
+
 	/**
 	 * Adds a new value to the <code>priceStorage</code> field.
 	 * This storage is not thread safe, so all adding must be done before the first call of the method <code>getPriceForWeight</code>!

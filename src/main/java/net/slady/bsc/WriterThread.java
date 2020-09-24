@@ -63,9 +63,15 @@ public class WriterThread extends Thread {
 	private void writeOutput() {
 		final LinkedHashMap<String, ComparableDoubleAdder> weightLines = packageService.getWeightLines();
 
-		for (String postalCode : weightLines.keySet()) {
-			final ComparableDoubleAdder doubleAdder = weightLines.get(postalCode);
-			System.out.format(Locale.US, "%s %1.3f\n", postalCode, doubleAdder.doubleValue());
+		if (packageService.isPrice()) {
+			for (String postalCode : weightLines.keySet()) {
+				final double weight = weightLines.get(postalCode).doubleValue();
+				System.out.format(Locale.US, "%s %1.3f %1.2f\n", postalCode, weight, packageService.getPriceForWeight(weight));
+			}
+		} else {
+			for (String postalCode : weightLines.keySet()) {
+				System.out.format(Locale.US, "%s %1.3f\n", postalCode, weightLines.get(postalCode).doubleValue());
+			}
 		}
 	}
 
