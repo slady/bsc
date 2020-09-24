@@ -18,7 +18,7 @@ public class WriterThread extends Thread {
 	/**
 	 * The timeout for the thread is once per minute.
 	 */
-	public static final int TIMEOUT = 60_00;
+	public static final int TIMEOUT = 60_000;
 
 	/**
 	 * The indicator if this tread is still running.
