@@ -1,7 +1,8 @@
 This is the Package Delivery software.
 Banking Software Company s.r.o. requested this piece of software as a homework for a job interview process.
 
-== Technology ==
+Technology
+==========
 This software was build using the Java programming language with Maven as the build automation tool and JUnit for unit testing.
 
 In order to build this project using maven, run:
@@ -24,7 +25,8 @@ And test input files both for weights and fees with this command:
 java -jar target\BSC-1.0-SNAPSHOT.jar src/test/resources/weights.txt src/test/resources/prices.txt
 ```
 
-== Business Analysis ==
+Business Requirements
+=====================
 The purpose of this program is to keep a record of packages processed.
 Each package information consists of weight (in kg) and destination postal code.
 Data are stored in memory, no database engines were introduced as per customer request.
@@ -59,7 +61,8 @@ Sample output (order by total weight):
 09300 3.200
 90005 2.000
 ```
-== Optional bonus task ==
+Optional bonus task
+===================
 The optional bonus task was implemented:
 
 The program takes and processes second command line argument specified at program run.
@@ -92,5 +95,6 @@ Output line format:
 ```
 <postal code: fixed 5 digits><space><total weight: fixed 3 decimal places, . (dot) as decimal separator><space><total fee: fixed 2 decimal places, . (dot) as decimal separator)
 ```
-== Code quality ==
+Code quality
+============
 The program is thread safe and the service code functionality is covered with unit tests.
