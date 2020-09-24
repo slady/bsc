@@ -21,6 +21,21 @@ public class PackageDelivery {
 	 */
 	public static final String KEYWORD_QUIT = "quit";
 
+	/** Error message. */
+	public static final String MESSAGE_ERROR_INCORRECT_INPUT_FORMAT = "Error: Incorrect input format!";
+
+	/** Error message. */
+	public static final String MESSAGE_INPUT_LINE_FORMAT = "Input line format:";
+
+	/** Error message. */
+	public static final String MESSAGE_INPUT_LINE_FORMAT_DETAIL = "<weight: positive number, >0, maximal 3 decimal places, . (dot) as decimal separator><space><postal code: fixed 5 digits>";
+
+	/** Error message. */
+	public static final String MESSAGE_ERROR_INCORRECT_INPUT_WEIGHT = "Error: Incorrect input weight!";
+
+	/** Error message. */
+	public static final String MESSAGE_WEIGHT_MUST_BE_A_POSITIVE_NUMBER = "Weight must be a positive number!";
+
 	/**
 	 * The entry point of the Package Delivery program.
 	 * @param args command line arguments as described in the README file
@@ -64,14 +79,14 @@ public class PackageDelivery {
 				postalCodeWeightPair = inputParserService.parsePostalCodeAndWeight(input);
 			} catch (final InputFormatException e) {
 				// handle InputFormatException
-				System.err.println("Error: Incorrect input format!");
-				System.err.println("Input line format:");
-				System.err.println("<weight: positive number, >0, maximal 3 decimal places, . (dot) as decimal separator><space><postal code: fixed 5 digits>");
+				System.err.println(MESSAGE_ERROR_INCORRECT_INPUT_FORMAT);
+				System.err.println(MESSAGE_INPUT_LINE_FORMAT);
+				System.err.println(MESSAGE_INPUT_LINE_FORMAT_DETAIL);
 				continue;
 			} catch (final IncorrectWeightException e) {
 				// handle IncorrectWeightException
-				System.err.println("Error: Incorrect input weight!");
-				System.err.println("Weight must be a positive number!");
+				System.err.println(MESSAGE_ERROR_INCORRECT_INPUT_WEIGHT);
+				System.err.println(MESSAGE_WEIGHT_MUST_BE_A_POSITIVE_NUMBER);
 				continue;
 			}
 
