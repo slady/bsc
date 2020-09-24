@@ -39,9 +39,9 @@ public class PackageServiceTest {
 		service.addWeightToPostalCode("98765", 4.4);
 		final LinkedHashMap<String, ComparableDoubleAdder> lines3 = service.getWeightLines();
 		final Iterator<Map.Entry<String, ComparableDoubleAdder>> iterator = lines3.entrySet().iterator();
-		TestHelper.assertDoubleEquals(3.3, iterator.next().getValue().doubleValue());
-		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue().doubleValue());
 		TestHelper.assertDoubleEquals(5.5, iterator.next().getValue().doubleValue());
+		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue().doubleValue());
+		TestHelper.assertDoubleEquals(3.3, iterator.next().getValue().doubleValue());
 		Assert.assertFalse(iterator.hasNext());
 	}
 

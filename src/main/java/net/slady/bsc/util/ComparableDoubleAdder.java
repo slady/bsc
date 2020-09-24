@@ -6,7 +6,7 @@ public class ComparableDoubleAdder extends DoubleAdder implements Comparable<Com
 
 	@Override
 	public int compareTo(final ComparableDoubleAdder o) {
-		return Double.compare(this.doubleValue(), o.doubleValue());
+		return Double.compare(o.doubleValue(), this.doubleValue());
 	}
 
 }
