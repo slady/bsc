@@ -67,6 +67,7 @@ public class PackageDelivery implements ErrorMessages {
 			} catch (final InputFormatException e) {
 				// handle InputFormatException
 				System.err.println(MESSAGE_ERROR_INCORRECT_INPUT_FORMAT);
+				System.err.println(MESSAGE_QUIT);
 				continue;
 			} catch (final IncorrectWeightException e) {
 				// handle IncorrectWeightException

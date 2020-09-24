@@ -21,6 +21,8 @@ public interface ErrorMessages {
 		"Input line format:" +
 		"\n<weight: positive number, >0, maximal 3 decimal places, . (dot) as decimal separator><space><postal code: fixed 5 digits>";
 
+	String MESSAGE_QUIT = "To Quit this program, type: quit";
+
 	String MESSAGE_ERROR_INCORRECT_INPUT_WEIGHT = "Error: Incorrect input weight!\n" +
 		"Weight must be a positive number!";
 
