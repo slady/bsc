@@ -1,7 +1,6 @@
 package net.slady.bsc.service;
 
 import net.slady.bsc.entities.WeightAndPricePair;
-import net.slady.bsc.util.ComparableDoubleAdder;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,7 +17,7 @@ public class PackageService {
 	 * The map for storing Postal Codes as keys and Weight as their values.
 	 * This map has to be thread safe.
 	 */
-	private final ConcurrentHashMap<String, ComparableDoubleAdder> packageStorage = new ConcurrentHashMap<>();
+	private final ConcurrentHashMap<String, Double> packageStorage = new ConcurrentHashMap<>();
 
 	/**
 	 * The List for storing Weight and Price values.
@@ -31,7 +30,7 @@ public class PackageService {
 	 * @param weight weight to be added
 	 */
 	public void addWeightToPostalCode(final String postalCode, final double weight) {
-		packageStorage.computeIfAbsent(postalCode, k -> new ComparableDoubleAdder()).add(weight);
+		packageStorage.put(postalCode, packageStorage.computeIfAbsent(postalCode, k -> 0.0) + weight);
 	}
 
 	/**
@@ -39,8 +38,8 @@ public class PackageService {
 	 * The list is ordered by the total weight values in the descending order.
 	 * @return list of postal codes and their total weights in a {@link LinkedHashMap}
 	 */
-	public LinkedHashMap<String, ComparableDoubleAdder> getWeightLines() {
-		return packageStorage.entrySet().stream().sorted(Map.Entry.comparingByValue())
+	public Map<String, Double> getWeightLines() {
+		return packageStorage.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed())
 			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
 				(oldValue, newValue) -> oldValue, LinkedHashMap::new));
 	}

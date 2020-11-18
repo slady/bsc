@@ -2,12 +2,10 @@ package net.slady.bsc.service;
 
 import net.slady.bsc.TestHelper;
 import net.slady.bsc.entities.WeightAndPricePair;
-import net.slady.bsc.util.ComparableDoubleAdder;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -24,24 +22,24 @@ public class PackageServiceTest {
 		service.addWeightToPostalCode("12345", 1.1);
 		service.addWeightToPostalCode("12345", 2.2);
 
-		final LinkedHashMap<String, ComparableDoubleAdder> lines1 = service.getWeightLines();
+		final Map<String, Double> lines1 = service.getWeightLines();
 		Assert.assertNotNull(lines1);
 		Assert.assertEquals(1, lines1.size());
-		TestHelper.assertDoubleEquals(3.3, lines1.get("12345").doubleValue());
+		TestHelper.assertDoubleEquals(3.3, lines1.get("12345"));
 
 		service.addWeightToPostalCode("54321", 5.5);
-		final LinkedHashMap<String, ComparableDoubleAdder> lines2 = service.getWeightLines();
+		final Map<String, Double> lines2 = service.getWeightLines();
 		Assert.assertNotNull(lines2);
 		Assert.assertEquals(2, lines2.size());
-		TestHelper.assertDoubleEquals(3.3, lines2.get("12345").doubleValue());
-		TestHelper.assertDoubleEquals(5.5, lines2.get("54321").doubleValue());
+		TestHelper.assertDoubleEquals(3.3, lines2.get("12345"));
+		TestHelper.assertDoubleEquals(5.5, lines2.get("54321"));
 
 		service.addWeightToPostalCode("98765", 4.4);
-		final LinkedHashMap<String, ComparableDoubleAdder> lines3 = service.getWeightLines();
-		final Iterator<Map.Entry<String, ComparableDoubleAdder>> iterator = lines3.entrySet().iterator();
-		TestHelper.assertDoubleEquals(5.5, iterator.next().getValue().doubleValue());
-		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue().doubleValue());
-		TestHelper.assertDoubleEquals(3.3, iterator.next().getValue().doubleValue());
+		final Map<String, Double> lines3 = service.getWeightLines();
+		final Iterator<Map.Entry<String, Double>> iterator = lines3.entrySet().iterator();
+		TestHelper.assertDoubleEquals(5.5, iterator.next().getValue());
+		TestHelper.assertDoubleEquals(4.4, iterator.next().getValue());
+		TestHelper.assertDoubleEquals(3.3, iterator.next().getValue());
 		Assert.assertFalse(iterator.hasNext());
 	}
 

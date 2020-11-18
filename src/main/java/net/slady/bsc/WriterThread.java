@@ -1,10 +1,9 @@
 package net.slady.bsc;
 
 import net.slady.bsc.service.PackageService;
-import net.slady.bsc.util.ComparableDoubleAdder;
 
-import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * The WriterThread class writes output to console once per minute.
@@ -61,16 +60,16 @@ public class WriterThread extends Thread {
 	 * Writ lines to the output.
 	 */
 	private void writeOutput() {
-		final LinkedHashMap<String, ComparableDoubleAdder> weightLines = packageService.getWeightLines();
+		final Map<String, Double> weightLines = packageService.getWeightLines();
 
 		if (packageService.isPrice()) {
 			for (String postalCode : weightLines.keySet()) {
-				final double weight = weightLines.get(postalCode).doubleValue();
+				final double weight = weightLines.get(postalCode);
 				System.out.format(Locale.US, "%s %1.3f %1.2f\n", postalCode, weight, packageService.getPriceForWeight(weight));
 			}
 		} else {
 			for (String postalCode : weightLines.keySet()) {
-				System.out.format(Locale.US, "%s %1.3f\n", postalCode, weightLines.get(postalCode).doubleValue());
+				System.out.format(Locale.US, "%s %1.3f\n", postalCode, weightLines.get(postalCode));
 			}
 		}
 	}
